@@ -28,12 +28,19 @@ class StoreFormValidation extends FormRequest
             'password' =>  [
                 'required',
                 'string',
-                'min:8', // must be at least 10 characters in length
+                'min:8', // must be at least 8 characters in length
                 'regex:/[a-z]/', // must contain at least 1 lowercase letter
                 'regex:/[A-Z]/', // must contain at least 1 uppercase letter
                 'regex:/[0-9]/', // must contain at least 1 digit
                 'regex:/[@$!%*#?&]/', // must contain a special character
             ],
+        ];
+    }
+
+    public function messages() {
+        return [
+            'password.required' => "Please input the password",
+            'password.regex' => 'The password must contain lowercase letter, uppercase letter, digit and special character',
         ];
     }
 }
