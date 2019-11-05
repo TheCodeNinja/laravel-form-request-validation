@@ -9,15 +9,21 @@
 </head>
 <body>
     <div class="container mt-3">
-        <form>
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                <p class="alert alert-danger">{{ $error }}</p>
+            @endforeach
+        @endif
+        <form action="" method="post">
+            @csrf
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="checkbox">
